@@ -701,6 +701,91 @@
             font-family: 'Fira Code', monospace;
         }
 
+        /* --- HMI & Display Showcase --- */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .showcase-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 240, 255, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.15);
+        }
+
+        .showcase-media {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background: #000;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .showcase-video,
+        .showcase-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .showcase-card:hover .showcase-video,
+        .showcase-card:hover .showcase-img {
+            transform: scale(1.05);
+        }
+
+        /* Dual image container for ClimGuard */
+        .dual-img-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        .dual-img-container img {
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+            border-right: 1px solid var(--glass-border);
+        }
+
+        .dual-img-container img:last-child {
+            border-right: none;
+        }
+
+        .showcase-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .showcase-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent-primary);
+        }
+
+        .showcase-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
         /* --- Responsive --- */
         @media (max-width: 992px) {
             .hero h1 {
@@ -909,6 +994,7 @@
                     <i class="fas fa-tools skill-icon"></i>
                     <h3>Tools & Protocols</h3>
                     <div class="skill-tags">
+                        <span class="skill-tag">Logic Analyzer</span>
                         <span class="skill-tag">Vector CANalyzer</span>
                         <span class="skill-tag">CANoe</span>
                         <span class="skill-tag">MQTT / HTTP</span>
@@ -983,13 +1069,14 @@
                     <div class="project-desc">
                         IoT-based EV charging solution for scalable community deployments.
                         <ul>
-                            <li>ESP-Mesh Lite enabled distributed architecture.</li>
+                            <li>ESP-MESH-Lite enabled distributed architecture.</li>
                             <li>RFID authentication & real-time energy monitoring.</li>
                             <li>MQTT/HTTP cloud integration & offline sync.</li>
                         </ul>
                     </div>
                     <div class="project-tech">
                         <span>ESP32</span>
+                        <span>Raspberry-Pi-Pico</span>
                         <span>MQTT</span>
                         <span>ESP-MESH-Lite</span>
                     </div>
@@ -1011,8 +1098,31 @@
                     </div>
                     <div class="project-tech">
                         <span>ESP32</span>
+                        <span>Raspberry-Pi-Pico</span>
                         <span>Wi-Fi</span>
                         <span>MQTT/HTTP</span>
+                    </div>
+                </div>
+
+                <!-- 16A Charger -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-plug folder-icon"></i>
+                    </div>
+                    <h3 class="project-title">EVSE - Private Charger (3.6 kW) - 2 Wheeler</h3>
+                    <div class="project-desc">
+                        Developed a 3.6kW smart charger for 2-wheelers utilizing ESP-MESH-Lite for networked
+                        communication and control.
+                        <ul>
+                            <li>ESP-MESH-Lite enabled distributed architecture.</li>
+                            <li>RFID authentication & real-time energy monitoring.</li>
+                            <li>MQTT/HTTP cloud integration & offline sync.</li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <span>ESP32</span>
+                        <span>Raspberry-Pi-Pico</span>
+                        <span>ESP-MESH-Lite</span>
                     </div>
                 </div>
 
@@ -1154,6 +1264,87 @@
         </div>
     </section>
 
+    <!-- HMI & Display Showcase Section -->
+    <section id="hmi-showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">UI & Display Work</h2>
+                <div class="section-subtitle">Showcasing graphical interfaces and interactive displays.</div>
+            </div>
+
+            <div class="showcase-grid">
+
+                <!-- Infotainment -->
+                <div class="showcase-card">
+                    <div class="showcase-media">
+                        <video class="showcase-video" controls disablePictureInPicture playsinline
+                            poster="Infotainment-1.jpeg">
+                            <source src="Automotive infotainment Bluetooth System - Part 1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="showcase-content">
+                        <h3 class="showcase-title">Automotive Infotainment</h3>
+                        <div class="showcase-desc">
+                            A sleek, Bluetooth-enabled automotive infotainment system interface. Designed with modern
+                            aesthetics for intuitive user interaction in vehicles.
+                        </div>
+                        <div class="project-tech">
+                            <span>UI/UX Design</span>
+                            <span>HMI</span>
+                            <span>Bluetooth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ClimGuard -->
+                <div class="showcase-card">
+                    <div class="showcase-media">
+                        <div class="dual-img-container">
+                            <img src="Climguard-1.jpeg" class="showcase-img" alt="ClimGuard Screen 1">
+                            <img src="Climguard-2.jpeg" class="showcase-img" alt="ClimGuard Screen 2">
+                        </div>
+                    </div>
+                    <div class="showcase-content">
+                        <h3 class="showcase-title">ClimGuard Interface</h3>
+                        <div class="showcase-desc">
+                            Interactive touch interface for the ClimGuard system. Features vibrant data visualization
+                            and responsive touch controls for environmental monitoring.
+                        </div>
+                        <div class="project-tech">
+                            <span>LVGL</span>
+                            <span>Touch UI</span>
+                            <span>ESP32</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SSD1306 -->
+                <div class="showcase-card">
+                    <div class="showcase-media">
+                        <video class="showcase-video" controls disablePictureInPicture playsinline>
+                            <source src="SSD1306 OLED LVGL Demo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="showcase-content">
+                        <h3 class="showcase-title">SSD1306 OLED with LVGL</h3>
+                        <div class="showcase-desc">
+                            Demonstrating the capabilities of LVGL on a monochrome SSD1306 OLED display. Proves that
+                            rich animations and UI elements can run efficiently on low-resource hardware.
+                        </div>
+                        <div class="project-tech">
+                            <span>LVGL</span>
+                            <span>SSD1306</span>
+                            <span>Monochrome UI</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Experience & Education Section -->
     <section id="experience">
         <div class="container">
@@ -1184,7 +1375,7 @@
                     <div class="timeline-content">
                         <div class="timeline-date">Graduated with 7.54 CGPA</div>
                         <h3 class="timeline-title">B.Tech in Electronics & Communication</h3>
-                        <div class="timeline-company">Andhra Loyola Institute of Engineering And Technology, Vijayawada
+                        <div class="timeline-company">Andhra Loyola Institute of Engineering and Technology, Vijayawada
                         </div>
 
                     </div>
@@ -1284,6 +1475,11 @@
                 }
             },
             "retina_detect": true
+        });
+
+        // Set Video Volume to 80%
+        document.querySelectorAll('.showcase-video').forEach(video => {
+            video.volume = 0.8;
         });
     </script>
 </body>
